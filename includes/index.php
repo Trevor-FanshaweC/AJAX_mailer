@@ -1,5 +1,5 @@
 <?php
-    // hi pan. Feel free to change this however you like
+    // hi justin. Feel free to change this however you like
     // this is just a placeholder file
 
     if(empty($_POST["email"])) {
