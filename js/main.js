@@ -1,35 +1,43 @@
 import { SendMail } from "./components/mailer.js";
 
 (() => {
-    let mailSubmit = document.querySelector('.submit-wrapper');
+    const { createApp } = Vue
 
-    function processMailFailure(result) {
-        // show a failure message in the UI
-        console.table(result); // table shows us an object in table form
-        alert('failure! and if you keep using an alert, DOUBLE failure!');
+    createApp({
+        data() {
+            return {
+                message: 'Hello Vue!'
+            }
+        },
 
-        // show some UI here to let the user know the mail attempt was successful
-    }
+        methods: {
+            processMailFailure(result) {
+                // show a failure message in the UI
+                console.table(this.$refs); // table shows us an object in table form
+                alert('failure! and if you keep using an alert, DOUBLE failure!');
 
-    function processMailSuccess(result) {
-        // show a success message in the UI
-        console.table(result); // table shows us an object in table form
-        alert("success! but don't EVER use alerts. They are gross.");
+                debugger;
+        
+                // show some UI here to let the user know the mail attempt was successful
+            },
 
-        // show some UI here to let the user know the mail attempt was successful
-    }
+            processMailSuccess(result) {
+                // show a success message in the UI
+                console.table(this.$refs); // table shows us an object in table form
+                alert("success! but don't EVER use alerts. They are gross.");        
+                // show some UI here to let the user know the mail attempt was successful
+            },
 
-    function processMail(event) {
-        // block the default submit behaviour
-        event.preventDefault();
-
-        // use the SendMail component to try to process mail
-        SendMail(this.parentNode)
-            .then(data => processMailSuccess(data))
-            .catch(err => processMailFailure(err));
-
-            // the error handler in the catch block could actually be a generic catch-and-display function that handles EVERY error you might encounter during runtime. Might be a better strategy to pass in a flag or just a message and have the function display it in the UI
-    }
-
-    mailSubmit.addEventListener("click", processMail);
+            processMail(event) {
+                // block the default submit behaviour
+                debugger;        
+                // use the SendMail component to try to process mail
+                SendMail(this.$el.parentNode)
+                    .then(data => this.processMailSuccess(data))
+                    .catch(err => this.processMailFailure(err));
+        
+                    // the error handler in the catch block could actually be a generic catch-and-display function that handles EVERY error you might encounter during runtime. Might be a better strategy to pass in a flag or just a message and have the function display it in the UI
+            }
+        }
+    }).mount('#mail-form')
 })();

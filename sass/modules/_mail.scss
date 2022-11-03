@@ -9,17 +9,15 @@ label {
     }
 }
 
-input[type=text], input[type=email], textarea {
+input[type=text], input[type=email], input[type=tel], textarea {
     padding: 0.6em;
     color: #333;
     border-radius: 4px;
     width: 250px;
 }
 
-textarea { resize: none; display: block; }
-
-.submit-wrapper {
-    display: inline-block;
+input[type=submit] {
+    display: block;
     margin-top: 2em;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
@@ -29,6 +27,6 @@ textarea { resize: none; display: block; }
     color: white;
 
     &:hover { background-color: #5588c8}
-
-    span { padding-right: 0.5em; }
 }
+
+textarea { resize: none; display: block; }
