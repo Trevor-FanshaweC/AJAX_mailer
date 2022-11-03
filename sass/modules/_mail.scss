@@ -29,4 +29,11 @@ input[type=submit] {
     &:hover { background-color: #5588c8}
 }
 
+input[type=submit]::after {   
+    content:"\f1d9";
+    font-family: FontAwesome;
+    color: white;
+    font-size: 2em;
+}
+
 textarea { resize: none; display: block; }
