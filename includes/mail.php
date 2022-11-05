@@ -3,7 +3,7 @@
     header("Content-Type: application/json; charset=UTF-8");
     
     if ($_POST) {
-        $recipient = "justin@cruxstudios.ca";
+        $recipient = "reciever email goes here";
         $subject = 'Email from site';
         $visitor_name         = "";
         $visitor_email        = "";
